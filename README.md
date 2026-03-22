@@ -1,4 +1,4 @@
-# Matt Hennessy Portfolio
+# Personal Portfolio
 
 This is my personal portfolio site. I built it to feel clean, immersive, and easy to explore without overcomplicating the experience.
 
