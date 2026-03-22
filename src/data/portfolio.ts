@@ -16,10 +16,6 @@ export const siteContent: SiteContent = {
     "When I'm not working, I'm usually skiing, mountain biking, exploring backroads, or soaking in remote hot springs. On the quieter side, nothing beats a slow Sunday morning with a good cup of coffee ☕️",
     "I care deeply about community, mental health, and personal growth, and I'm driven by solving problems that make the world a better place for people.",
   ],
-  photography: [
-    "Photography has become one of my favorite ways to slow down and pay attention. Most of what I shoot lives at the intersection of adventure, landscape, and life on the road.",
-    "I'm especially drawn to quiet campsites, mountain light, long drives on backroads, and the small in-between moments that make a place feel real.",
-  ],
   photos: [
     {
       thumbSrc: "/assets/photography/salt-spiral.png",
@@ -131,7 +127,7 @@ export const siteContent: SiteContent = {
     groups: [
       {
         title: "Frontend",
-        items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+        items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "WebGL"],
       },
       {
         title: "Backend",
@@ -164,7 +160,7 @@ export const siteContent: SiteContent = {
       url: "https://www.instagram.com/mattcognac/",
       handle: "@mattcognac",
       eyebrow: "Adventure and photography",
-      description: "Trips, campsites, and photos from the field.",
+      description: "Trips, landscapes, and photos from the field.",
       ctaLabel: "Open Instagram",
     },
     {

@@ -54,7 +54,6 @@ export type SiteContent = {
   avatarSrc?: string;
   avatarAlt: string;
   about: string | string[];
-  photography: string | string[];
   photos: PhotoItem[];
   projects: ProjectGroup[];
   skills: SkillsContent;
