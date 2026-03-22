@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Geist } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
@@ -26,10 +28,9 @@ const themeInitScript = `
 (function () {
   try {
     var stored = localStorage.getItem("theme");
-    var dark = false;
+    var dark = true;
     if (stored === "dark") dark = true;
     else if (stored === "light") dark = false;
-    else dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     document.documentElement.classList.toggle("dark", dark);
   } catch (_) {}
 })();
@@ -44,13 +45,15 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${geist.variable} h-dvh max-h-dvh overflow-hidden antialiased`}
+      className={`${geist.variable} dark h-dvh max-h-dvh overflow-hidden antialiased`}
     >
       <body className="h-dvh max-h-dvh overflow-hidden bg-white text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100">
         <Script id="theme-init" strategy="beforeInteractive">
           {themeInitScript}
         </Script>
         {children}
+        <Analytics />
+        <SpeedInsights />
         <noscript>
           <div className="fixed inset-0 z-[200] flex flex-col items-center justify-center gap-4 bg-white p-8 text-center text-neutral-700 dark:bg-neutral-950 dark:text-neutral-300">
             <p>

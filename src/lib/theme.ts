@@ -21,7 +21,7 @@ function getSnapshot(): boolean {
 }
 
 function getServerSnapshot(): boolean {
-  return false;
+  return true;
 }
 
 /** Subscribes to `html.dark` so components re-render when the theme toggles. */
