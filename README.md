@@ -1,31 +1,27 @@
 # Matt Hennessy Portfolio
 
-A personal portfolio for Matt Hennessy built with Next.js. The site combines a fluid interactive backdrop with a clean panel-based interface for projects, photography, skills, and contact.
+This is my personal portfolio site. I built it to feel clean, immersive, and easy to explore without overcomplicating the experience.
 
-## Highlights
+The visual direction is intentionally minimal: a fluid interactive backdrop, simple panel navigation, and a structure that lets the work, photography, and writing speak for themselves. On the development side, I wanted the site to stay easy to maintain, so most of the content lives in one place and the UI is broken into small reusable pieces.
 
-- Full-screen landing experience with a custom WebGL fluid background
-- Panel-based navigation for story, projects, skills, photography, and contact
-- Light and dark theme toggle
-- Photography gallery with lightbox navigation
-- Content-driven setup through a single portfolio data file
+If you want to use this repo as a template for your own site, feel free. Please make it your own and replace all personal content and assets.
 
 ## Stack
 
-- Next.js 16 (App Router)
+- Next.js 16
 - React 19
 - TypeScript
 - Tailwind CSS v4
 - Custom WebGL fluid animation
 
-## Local Development
+## Running It Locally
 
 ```bash
 npm install
 npm run dev
 ```
 
-Other useful commands:
+Other commands:
 
 ```bash
 npm run build
@@ -33,22 +29,37 @@ npm run start
 npm run lint
 ```
 
-## Project Structure
+## Content
 
-- `src/data/portfolio.ts` stores the site copy, project links, photography, skills, and social links.
-- `src/components/HomePage.tsx` renders the main landing experience.
-- `src/components/home/` contains the panel UI for projects, skills, photography, and contact.
-- `src/components/fluid/FluidBackdrop.tsx` powers the animated background.
-- `public/assets/` contains the headshots, photography, and client logo assets used across the site.
+Most of the site content lives in `src/data/portfolio.ts`, including:
+
+- about copy
+- project links
+- photography entries
+- skills
+- social links
+
+## Structure
+
+- `src/components/HomePage.tsx` contains the main landing experience
+- `src/components/home/` contains the panel UI
+- `src/components/fluid/FluidBackdrop.tsx` handles the animated background
+- `public/assets/` contains the images and logos used throughout the site
 
 ## Configuration
 
-- Set `NEXT_PUBLIC_SITE_URL` to your production URL so metadata and Open Graph tags resolve correctly.
+Set `NEXT_PUBLIC_SITE_URL` to the production URL so metadata and Open Graph tags resolve correctly.
 
 ## Deployment
 
-The app is set up like a standard Next.js project and deploys cleanly to platforms like Vercel. A typical setup is:
+I deploy this like a standard Next.js app:
 
-1. Push the repo to GitHub.
-2. Import the repo into Vercel.
-3. Point your custom domain DNS to Vercel from Cloudflare.
+1. Push to GitHub
+2. Import into Vercel
+3. Point the domain from Cloudflare to Vercel
+
+## License
+
+The code in this repository is licensed under the [MIT License](LICENSE).
+
+All personal content and media, including text, photography, headshots, logos, and project-specific assets, are not covered by that license and may not be reused without permission.
