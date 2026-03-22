@@ -1,36 +1,30 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio
 
-## Getting Started
+Simple, scrollable portfolio (default): projects, stack, travels, and contact — warm dark theme, no hero image required.
 
-First, run the development server:
+An **optional interactive campsite scene** is still available if you add art later.
+
+## Scripts
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run dev    # dev server (Turbopack)
+npm run build  # production build
+npm run start  # run production build
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Customize
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Content:** [`src/data/portfolio.ts`](src/data/portfolio.ts) — bio, projects, links, stack, `photography` (optional array; leave empty to hide the section on the simple site).
+- **Interactive scene:** add `public/assets/campsite.png` and open [`/?view=scene`](http://localhost:3000/?view=scene). Hotspot positions live in `hotspotConfigs` in the same file.
+- **Ambient sound (scene only):** `public/assets/audio/campfire.mp3`
+- **Production URL:** set `NEXT_PUBLIC_SITE_URL` for Open Graph (`layout.tsx`).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Routes
 
-## Learn More
+- `/` — simple portfolio (default).
+- `/?view=scene` — full-screen interactive scene + loader (experimental).
 
-To learn more about Next.js, take a look at the following resources:
+## Stack
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Next.js (App Router), React, Tailwind CSS v4, Framer Motion.

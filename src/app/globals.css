@@ -1,26 +1,148 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hero: soft metallic silver (light) / bright silver (dark) — reads richer than flat neutrals */
+.home-hero-title {
+  background-image: linear-gradient(
+    155deg,
+    #1c1c20 0%,
+    #5a5a64 42%,
+    #24242a 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.dark .home-hero-title {
+  background-image: linear-gradient(
+    155deg,
+    #c8c8d0 0%,
+    #f4f4f7 38%,
+    #a8a8b4 100%
+  );
+}
+
+@keyframes home-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.home-animate-in {
+  animation: home-fade-up 0.78s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  opacity: 0;
+}
+
+.home-delay-0 {
+  animation-delay: 0ms;
+}
+.home-delay-1 {
+  animation-delay: 0.09s;
+}
+.home-delay-2 {
+  animation-delay: 0.18s;
+}
+.home-delay-3 {
+  animation-delay: 0.27s;
+}
+.home-delay-4 {
+  animation-delay: 0.36s;
+}
+
+.home-panel-grid > button {
+  animation: home-fade-up 0.78s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  opacity: 0;
+}
+
+.home-panel-grid > button:nth-child(1) {
+  animation-delay: 0.42s;
+}
+.home-panel-grid > button:nth-child(2) {
+  animation-delay: 0.5s;
+}
+.home-panel-grid > button:nth-child(3) {
+  animation-delay: 0.58s;
+}
+.home-panel-grid > button:nth-child(4) {
+  animation-delay: 0.66s;
+}
+.home-panel-grid > button:nth-child(5) {
+  animation-delay: 0.74s;
+}
+
+@keyframes skills-bar-enter {
+  from {
+    opacity: 0.5;
+    transform: scaleX(0);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+.skills-bar-fill {
+  transform-origin: left center;
+  background-image: linear-gradient(90deg, #38bdf8 0%, #0ea5e9 52%, #0284c7 100%);
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.22);
+  animation: skills-bar-enter 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+html.dark .skills-bar-fill {
+  box-shadow: 0 0 18px rgba(56, 189, 248, 0.2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .home-animate-in {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .home-panel-grid > button {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .skills-bar-fill {
+    animation: none;
+    transform: none;
+  }
 }
