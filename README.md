@@ -27,6 +27,7 @@ Other commands:
 npm run build
 npm run start
 npm run lint
+npm run typecheck
 ```
 
 ## Content
@@ -48,7 +49,7 @@ Most of the site content lives in `src/data/portfolio.ts`, including:
 
 ## Configuration
 
-Set `NEXT_PUBLIC_SITE_URL` to the production URL so metadata and Open Graph tags resolve correctly.
+`NEXT_PUBLIC_SITE_URL` is optional. If you set it, metadata, sitemap, robots, and Open Graph URLs will resolve against that value. Otherwise, the app falls back to the production domain in the app code.
 
 ## Deployment
 
@@ -57,6 +58,7 @@ I deploy this like a standard Next.js app:
 1. Push to GitHub
 2. Import into Vercel
 3. Point the domain from Cloudflare to Vercel
+4. Let CI run lint, typecheck, and build on each push/PR
 
 ## License
 

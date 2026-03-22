@@ -4,20 +4,20 @@ import type { FormEvent } from "react";
 import dynamic from "next/dynamic";
 import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
-import { siteContent } from "@/data/portfolio";
-import { FluidBackdrop } from "@/components/fluid/FluidBackdrop";
-import { useThemeAnimationReplayNonce } from "@/lib/useThemeAnimationReplay";
-
-const ThemeToggle = dynamic(
-  () => import("@/components/ThemeToggle").then((m) => m.ThemeToggle),
-  { ssr: false },
-);
 import {
   ArrowIcon,
   PanelButtonGrid,
   PanelOverlays,
   type PanelKey,
 } from "@/components/home/HomePagePanels";
+import { FluidBackdrop } from "@/components/fluid/FluidBackdrop";
+import { siteContent } from "@/data/portfolio";
+import { useThemeAnimationReplayNonce } from "@/lib/useThemeAnimationReplay";
+
+const ThemeToggle = dynamic(
+  () => import("@/components/ThemeToggle").then((m) => m.ThemeToggle),
+  { ssr: false },
+);
 
 export function HomePage() {
   const c = siteContent;

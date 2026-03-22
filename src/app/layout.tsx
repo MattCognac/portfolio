@@ -11,16 +11,56 @@ const geist = Geist({
 });
 
 const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.mattcognac.com";
+
+const title = "Matt Hennessy · Designer, Developer & Photographer";
+const description =
+  "Matt Hennessy — a PNW-based designer, developer, and adventure photographer. Explore projects, photography, and more.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Matt Hennessy · Portfolio",
-  description:
-    "Matt Hennessy — projects, about, and contact.",
+  title,
+  description,
+  keywords: [
+    "Matt Hennessy",
+    "portfolio",
+    "web developer",
+    "designer",
+    "photographer",
+    "Pacific Northwest",
+    "freelance",
+    "React",
+    "Next.js",
+  ],
+  authors: [{ name: "Matt Hennessy" }],
+  creator: "Matt Hennessy",
   openGraph: {
-    title: "Matt Hennessy · Portfolio",
-    description: "Matt Hennessy — projects, about, and contact.",
+    type: "website",
+    locale: "en_US",
+    url: siteUrl,
+    siteName: "Matt Hennessy",
+    title,
+    description,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    creator: "@MattCognacX",
+  },
+  alternates: {
+    canonical: siteUrl,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 
@@ -36,6 +76,29 @@ const themeInitScript = `
 })();
 `;
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      name: "Matt Hennessy",
+      url: siteUrl,
+      description,
+    },
+    {
+      "@type": "Person",
+      name: "Matt Hennessy",
+      url: siteUrl,
+      jobTitle: "Designer & Developer",
+      sameAs: [
+        "https://github.com/MattCognac",
+        "https://www.instagram.com/mattcognac/",
+        "https://x.com/MattCognacX",
+      ],
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -48,6 +111,10 @@ export default function RootLayout({
       className={`${geist.variable} dark h-dvh max-h-dvh overflow-hidden antialiased`}
     >
       <body className="h-dvh max-h-dvh overflow-hidden bg-white text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <Script id="theme-init" strategy="beforeInteractive">
           {themeInitScript}
         </Script>

@@ -1,4 +1,4 @@
-import { useMemo, useState, type ReactNode } from "react";
+import { useEffect, useId, useMemo, useRef, useState, type ReactNode } from "react";
 import { PhotographyPanel } from "@/components/home/PhotographyPanel";
 import { SkillsPanel } from "@/components/home/SkillsPanel";
 import type { SiteContent } from "@/lib/types";
@@ -95,16 +95,30 @@ function Panel({
   children: ReactNode;
   maxWidthClassName?: string;
 }) {
+  const titleId = useId();
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    closeButtonRef.current?.focus();
+  }, []);
+
   return (
     <div className="fixed inset-0 z-30 flex items-center justify-center bg-white/18 px-4 backdrop-blur-sm dark:bg-neutral-950/40">
       <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={titleId}
         className={`w-full ${maxWidthClassName} overflow-hidden rounded-[2rem] border border-neutral-200/80 bg-white/76 shadow-[0_25px_100px_rgba(0,0,0,0.12)] backdrop-blur-2xl dark:border-neutral-700/70 dark:bg-neutral-900/88 dark:shadow-[0_25px_100px_rgba(0,0,0,0.55)]`}
       >
         <div className="flex items-center justify-between border-b border-neutral-200/80 px-5 py-4 dark:border-neutral-700/70 sm:px-6">
-          <h2 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 sm:text-base">
+          <h2
+            id={titleId}
+            className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 sm:text-base"
+          >
             {title}
           </h2>
           <button
+            ref={closeButtonRef}
             type="button"
             onClick={onClose}
             className="rounded-full border border-neutral-200/90 bg-white/65 px-3 py-1 text-xs font-medium text-neutral-700 transition hover:border-neutral-300 hover:text-neutral-900 dark:border-neutral-600/85 dark:bg-neutral-800/80 dark:text-neutral-200 dark:hover:border-neutral-500 dark:hover:text-white"

@@ -139,7 +139,7 @@ export const siteContent: SiteContent = {
       },
       {
         title: "Product & Tooling",
-        items: ["Stripe", "Vercel", "Resend", "Python", "AI-assisted development"],
+        items: ["Stripe", "Vercel", "Resend", "Python", "Automation"],
       },
     ],
   },

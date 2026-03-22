@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import type { PhotoItem } from "@/lib/types";
@@ -43,9 +43,20 @@ function PhotoLightbox({
 }) {
   const imageClassName =
     "h-full max-h-full w-auto max-w-full rounded-[1.4rem] object-contain";
+  const titleId = useId();
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    closeButtonRef.current?.focus();
+  }, []);
 
   return (
-    <div className="fixed inset-0 z-[60] bg-neutral-950/88 p-4 backdrop-blur-md sm:p-6">
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby={titleId}
+      className="fixed inset-0 z-[60] bg-neutral-950/88 p-4 backdrop-blur-md sm:p-6"
+    >
       <button
         type="button"
         aria-label="Close lightbox"
@@ -55,7 +66,10 @@ function PhotoLightbox({
 
       <div className="relative z-10 flex h-full flex-col">
         <div className="flex items-center justify-between gap-3">
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/65">
+          <p
+            id={titleId}
+            className="text-xs font-semibold uppercase tracking-[0.22em] text-white/65"
+          >
             Photo {photoIndex + 1} / {totalPhotos}
           </p>
           <div className="flex items-center gap-2">
@@ -65,9 +79,15 @@ function PhotoLightbox({
             <LightboxButton label="Next photo" onClick={onNext}>
               Next
             </LightboxButton>
-            <LightboxButton label="Close lightbox" onClick={onClose}>
+            <button
+              ref={closeButtonRef}
+              type="button"
+              onClick={onClose}
+              aria-label="Close lightbox"
+              className="rounded-full border border-white/15 bg-white/10 px-3 py-2 text-sm font-medium text-white backdrop-blur-md transition hover:bg-white/18"
+            >
               Close
-            </LightboxButton>
+            </button>
           </div>
         </div>
 
