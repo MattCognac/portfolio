@@ -12,6 +12,7 @@ const geist = Geist({
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.mattcognac.com";
+const openGraphImagePath = "/opengraph-image";
 
 const title = "Matt Hennessy · Designer, Developer & Photographer";
 const description =
@@ -41,12 +42,14 @@ export const metadata: Metadata = {
     siteName: "Matt Hennessy",
     title,
     description,
+    images: [{ url: openGraphImagePath, width: 1200, height: 630, alt: title }],
   },
   twitter: {
     card: "summary_large_image",
     title,
     description,
     creator: "@MattCognacX",
+    images: [openGraphImagePath],
   },
   alternates: {
     canonical: siteUrl,

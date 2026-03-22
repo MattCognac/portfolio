@@ -1,9 +1,19 @@
 "use client";
 
-import { useEffect, useId, useRef, useState, type ReactNode } from "react";
+import {
+  useCallback,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  type ReactNode,
+  type TouchEvent,
+} from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import type { PhotoItem } from "@/lib/types";
+
+const LIGHTBOX_SWIPE_THRESHOLD = 48;
 
 function LightboxButton({
   label,
@@ -33,6 +43,9 @@ function PhotoLightbox({
   onClose,
   onPrevious,
   onNext,
+  onTouchStart,
+  onTouchEnd,
+  onTouchCancel,
 }: {
   photo: PhotoItem;
   photoIndex: number;
@@ -40,9 +53,12 @@ function PhotoLightbox({
   onClose: () => void;
   onPrevious: () => void;
   onNext: () => void;
+  onTouchStart: (event: TouchEvent<HTMLDivElement>) => void;
+  onTouchEnd: (event: TouchEvent<HTMLDivElement>) => void;
+  onTouchCancel: () => void;
 }) {
   const imageClassName =
-    "h-full max-h-full w-auto max-w-full rounded-[1.4rem] object-contain";
+    "h-full max-h-full w-auto max-w-full object-contain";
   const titleId = useId();
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -92,7 +108,12 @@ function PhotoLightbox({
         </div>
 
         <div className="mt-3 flex min-h-0 flex-1">
-          <div className="relative flex min-h-0 flex-1 items-center justify-center overflow-hidden rounded-[1.8rem] border border-white/10 bg-black/30">
+          <div
+            className="relative flex min-h-0 flex-1 items-center justify-center overflow-hidden rounded-[1.8rem] border border-white/10 bg-black/30"
+            onTouchStart={onTouchStart}
+            onTouchEnd={onTouchEnd}
+            onTouchCancel={onTouchCancel}
+          >
             <Image
               src={photo.fullSrc}
               alt={photo.alt}
@@ -119,6 +140,69 @@ function PhotoLightbox({
 
 export function PhotographyPanel({ photos }: { photos: PhotoItem[] }) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const touchStartRef = useRef<{ x: number; y: number } | null>(null);
+
+  const showPreviousPhoto = useCallback(() => {
+    setActiveIndex((current) =>
+      current === null ? current : (current - 1 + photos.length) % photos.length,
+    );
+  }, [photos.length]);
+
+  const showNextPhoto = useCallback(() => {
+    setActiveIndex((current) =>
+      current === null ? current : (current + 1) % photos.length,
+    );
+  }, [photos.length]);
+
+  const closeLightbox = useCallback(() => {
+    setActiveIndex(null);
+  }, []);
+
+  const handleLightboxTouchStart = useCallback(
+    (event: TouchEvent<HTMLDivElement>) => {
+      const touch = event.changedTouches[0];
+      if (!touch) return;
+
+      touchStartRef.current = {
+        x: touch.clientX,
+        y: touch.clientY,
+      };
+    },
+    [],
+  );
+
+  const handleLightboxTouchEnd = useCallback(
+    (event: TouchEvent<HTMLDivElement>) => {
+      const startingTouch = touchStartRef.current;
+      const endingTouch = event.changedTouches[0];
+
+      touchStartRef.current = null;
+
+      if (!startingTouch || !endingTouch) return;
+
+      const deltaX = endingTouch.clientX - startingTouch.x;
+      const deltaY = endingTouch.clientY - startingTouch.y;
+
+      if (
+        Math.abs(deltaX) < LIGHTBOX_SWIPE_THRESHOLD ||
+        Math.abs(deltaX) <= Math.abs(deltaY)
+      ) {
+        return;
+      }
+
+      if (deltaX > 0) {
+        showPreviousPhoto();
+        return;
+      }
+
+      showNextPhoto();
+    },
+    [showNextPhoto, showPreviousPhoto],
+  );
+
+  const handleLightboxTouchCancel = useCallback(() => {
+    touchStartRef.current = null;
+  }, []);
 
   useEffect(() => {
     if (activeIndex === null) return;
@@ -127,32 +211,26 @@ export function PhotographyPanel({ photos }: { photos: PhotoItem[] }) {
       if (event.key === "Escape") {
         event.preventDefault();
         event.stopPropagation();
-        setActiveIndex(null);
+        closeLightbox();
         return;
       }
 
       if (event.key === "ArrowLeft") {
         event.preventDefault();
         event.stopPropagation();
-        setActiveIndex((current) =>
-          current === null
-            ? current
-            : (current - 1 + photos.length) % photos.length,
-        );
+        showPreviousPhoto();
       }
 
       if (event.key === "ArrowRight") {
         event.preventDefault();
         event.stopPropagation();
-        setActiveIndex((current) =>
-          current === null ? current : (current + 1) % photos.length,
-        );
+        showNextPhoto();
       }
     };
 
     window.addEventListener("keydown", onKeyDown, true);
     return () => window.removeEventListener("keydown", onKeyDown, true);
-  }, [activeIndex, photos.length]);
+  }, [activeIndex, closeLightbox, showNextPhoto, showPreviousPhoto]);
 
   useEffect(() => {
     if (activeIndex === null) return;
@@ -206,19 +284,12 @@ export function PhotographyPanel({ photos }: { photos: PhotoItem[] }) {
               photo={activePhoto}
               photoIndex={activeIndex ?? 0}
               totalPhotos={photos.length}
-              onClose={() => setActiveIndex(null)}
-              onPrevious={() =>
-                setActiveIndex((current) =>
-                  current === null
-                    ? current
-                    : (current - 1 + photos.length) % photos.length,
-                )
-              }
-              onNext={() =>
-                setActiveIndex((current) =>
-                  current === null ? current : (current + 1) % photos.length,
-                )
-              }
+              onClose={closeLightbox}
+              onPrevious={showPreviousPhoto}
+              onNext={showNextPhoto}
+              onTouchStart={handleLightboxTouchStart}
+              onTouchEnd={handleLightboxTouchEnd}
+              onTouchCancel={handleLightboxTouchCancel}
             />,
             document.body,
           )

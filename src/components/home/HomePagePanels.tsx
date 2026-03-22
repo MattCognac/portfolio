@@ -65,16 +65,18 @@ function PanelCard({
   label,
   kind,
   onClick,
+  className = "",
 }: {
   label: string;
   kind: PanelKey;
   onClick: () => void;
+  className?: string;
 }) {
   return (
     <button
       type="button"
       onClick={onClick}
-      className="group flex min-h-[4.25rem] flex-col items-center justify-center gap-1.5 rounded-[1.15rem] border border-neutral-200/75 bg-white/42 px-2.5 py-2.5 text-[0.72rem] font-medium text-neutral-700 shadow-[0_8px_30px_rgba(0,0,0,0.04)] backdrop-blur-xl transition hover:border-neutral-300 hover:bg-white/62 hover:text-neutral-900 active:scale-[0.98] dark:border-neutral-700/70 dark:bg-neutral-950/45 dark:text-neutral-300 dark:shadow-[0_8px_30px_rgba(0,0,0,0.35)] dark:hover:border-neutral-600 dark:hover:bg-neutral-900/55 dark:hover:text-neutral-100 sm:min-h-[4.75rem] sm:text-[0.8rem]"
+      className={`${className} group flex min-h-[4.25rem] flex-col items-center justify-center gap-1.5 rounded-[1.15rem] border border-neutral-200/75 bg-white/42 px-2.5 py-2.5 text-[0.72rem] font-medium text-neutral-700 shadow-[0_8px_30px_rgba(0,0,0,0.04)] backdrop-blur-xl transition hover:border-neutral-300 hover:bg-white/62 hover:text-neutral-900 active:scale-[0.98] dark:border-neutral-700/70 dark:bg-neutral-950/45 dark:text-neutral-300 dark:shadow-[0_8px_30px_rgba(0,0,0,0.35)] dark:hover:border-neutral-600 dark:hover:bg-neutral-900/55 dark:hover:text-neutral-100 sm:min-h-[4.75rem] sm:text-[0.8rem]`}
     >
       <span className="text-neutral-500 transition group-hover:text-sky-600 dark:text-neutral-400 dark:group-hover:text-sky-400">
         <CardIcon kind={kind} />
@@ -151,9 +153,15 @@ export function PanelButtonGrid({
   onSelect: (key: PanelKey) => void;
 }) {
   return (
-    <div className="home-panel-grid mt-6 grid w-full max-w-[26rem] grid-cols-3 gap-2.5 sm:mt-7 sm:max-w-[34rem] sm:grid-cols-5 sm:gap-3">
-      {PANEL_CARDS.map(({ label, kind }) => (
-        <PanelCard key={kind} label={label} kind={kind} onClick={() => onSelect(kind)} />
+    <div className="home-panel-grid mt-6 grid w-full max-w-[26rem] grid-cols-6 gap-2.5 sm:mt-7 sm:max-w-[34rem] sm:grid-cols-5 sm:gap-3">
+      {PANEL_CARDS.map(({ label, kind }, index) => (
+        <PanelCard
+          key={kind}
+          label={label}
+          kind={kind}
+          onClick={() => onSelect(kind)}
+          className={index === 3 ? "col-start-2 col-span-2 sm:col-auto sm:col-span-1" : "col-span-2 sm:col-span-1"}
+        />
       ))}
     </div>
   );
