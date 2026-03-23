@@ -111,7 +111,7 @@ export const siteContent: SiteContent = {
           title: "Memberbase",
           description:
             "Consumer-facing product site for a membership savings app that reminds users where benefits from programs like AAA, AARP, and Costco can be used.",
-          url: "https://memberbase-marketing.vercel.app/",
+          url: "https://www.joinmemberbase.com/",
           stack: ["Next.js", "React", "JavaScript", "Vercel"],
         },
       ],
