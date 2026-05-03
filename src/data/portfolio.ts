@@ -11,10 +11,11 @@ export const siteContent: SiteContent = {
   avatarAlt:
     "Professional headshot of Matt Hennessy, smiling, lit by warm sunlight against a blurred dark green background.",
   about: [
-    "I'm a self-taught designer and developer from the foothills of Northern California. After spending the last few years living out of a backpack across Europe and Southeast Asia, I recently put down roots in the Pacific Northwest.",
-    "I love building things — the medium changes, from woodworking to apps to renovating off-grid campers, but the feeling is the same: taking a vision and bringing it to life.",
-    "When I'm not working, I'm usually skiing, mountain biking, exploring backroads, or soaking in remote hot springs. On the quieter side, nothing beats a slow Sunday morning with a good cup of coffee ☕️",
-    "I care deeply about community, mental health, and personal growth, and I'm driven by solving problems that make the world a better place for people.",
+    "I'm a self-taught designer and developer originally from the foothills of Northern California — though \"self-taught\" has always felt more like a philosophy than a résumé line. I've never been great at waiting for permission to figure something out, so I mostly just started making things and learned what I needed along the way.",
+    "After a few years living out of a backpack across Europe and Southeast Asia, I landed in the Pacific Northwest and it felt immediately like home — beautiful environments and towns full of people who'd rather be outside, who build things with their hands, and who care about their community. That energy fits me well.",
+    "Building is the throughline of most of what I do, even when the medium changes completely. Some weeks that looks like woodworking or renovating an off-grid camper. Other weeks it's shipping features on Memberbase, a membership platform I'm building independently, or doing design and development work through Built for Pros. The tools are different but the feeling is the same — taking something from a rough idea to a thing that actually exists and works.",
+    "Travel opened my eyes in terms of how I think about people and problems. Spending that much time outside your own context, navigating unfamiliar places with limited resources, makes you better at seeing what people actually need versus what they say they need. That's shaped a lot of how I approach problems. I'm most motivated when I'm working on something that makes a real difference in how people experience their lives — especially around community, mental health, and personal growth.",
+    "When I'm not working, I'm usually on a mountain — skiing in the winter, mountain biking when the trails dry out — or exploring backroads and hunting down remote hot springs. On the slower days, a chill Sunday morning with a good cup of coffee is just about perfect. ☕️",
   ],
   photos: [
     {
