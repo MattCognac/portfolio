@@ -90,7 +90,7 @@ function Panel({
   title,
   onClose,
   children,
-  maxWidthClassName = "max-w-xl",
+  maxWidthClassName = "max-w-2xl",
 }: {
   title: string;
   onClose: () => void;
@@ -128,7 +128,7 @@ function Panel({
             Close
           </button>
         </div>
-        <div className="hide-scrollbar max-h-[65vh] overflow-y-auto px-5 py-5 sm:px-6 sm:py-6">
+        <div className="hide-scrollbar max-h-[72vh] overflow-y-auto px-5 py-5 sm:px-6 sm:py-6">
           {children}
         </div>
       </div>

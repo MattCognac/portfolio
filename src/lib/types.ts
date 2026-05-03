@@ -20,18 +20,14 @@ export type SocialLink = {
   ctaLabel?: string;
 };
 
-export type SkillStrength = {
-  label: string;
-  value: number;
-};
-
 export type SkillGroup = {
   title: string;
+  description: string;
   items: string[];
 };
 
 export type SkillsContent = {
-  focusAreas: SkillStrength[];
+  intro: string;
   groups: SkillGroup[];
 };
 

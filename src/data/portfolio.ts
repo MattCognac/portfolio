@@ -255,28 +255,60 @@ export const siteContent: SiteContent = {
     },
   ],
   skills: {
-    focusAreas: [
-      { label: "Resourcefulness", value: 95 },
-      { label: "Communication", value: 92 },
-      { label: "Product Thinking", value: 90 },
-      { label: "Leadership", value: 87 },
-    ],
+    intro:
+      "I'm a full-stack web developer who works across design, product, and implementation. I build polished marketing sites, custom web apps, and the systems behind them: clear user flows, responsive interfaces, lead capture, payments, automations, and backend pieces that keep everything working.",
     groups: [
       {
-        title: "Frontend",
-        items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "WebGL"],
+        title: "Websites & Interfaces",
+        description:
+          "Fast, polished web experiences with clear structure, responsive layouts, and accessible UI.",
+        items: [
+          "Next.js",
+          "React",
+          "TypeScript",
+          "Tailwind CSS",
+          "Webflow",
+          "Accessibility",
+        ],
       },
       {
-        title: "Backend",
-        items: ["Node.js", "Prisma", "PostgreSQL", "Supabase"],
+        title: "Marketing & Growth",
+        description:
+          "Business-focused web work for sharper messaging, stronger conversion, and better discovery.",
+        items: [
+          "Landing pages",
+          "SEO",
+          "Conversion UX",
+          "Performance",
+          "Analytics",
+          "Content structure",
+        ],
       },
       {
-        title: "Design",
-        items: ["Figma", "Webflow", "Design systems"],
+        title: "Custom Web Apps",
+        description:
+          "Web-based tools for workflows, accounts, portals, forms, and product ideas.",
+        items: [
+          "Dashboards",
+          "Member portals",
+          "Forms",
+          "Auth",
+          "Payments",
+          "Automations",
+        ],
       },
       {
-        title: "Product & Tooling",
-        items: ["Stripe", "Vercel", "Resend", "Python", "Automation"],
+        title: "Infrastructure & Integrations",
+        description:
+          "The technical foundation behind sites and apps, from deploys to data and services.",
+        items: [
+          "Vercel",
+          "Supabase",
+          "PostgreSQL",
+          "Node.js",
+          "Stripe",
+          "Resend",
+        ],
       },
     ],
   },
