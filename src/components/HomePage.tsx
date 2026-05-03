@@ -59,6 +59,13 @@ export function HomePage() {
 
       <ThemeToggle />
 
+      <nav aria-label="Portfolio sections" className="sr-only">
+        <a href="/about">About Matt Hennessy</a>
+        <a href="/projects">Projects</a>
+        <a href="/skills">Skills</a>
+        <a href="/photography">Photography</a>
+      </nav>
+
       <div className="relative flex h-dvh max-h-dvh items-center justify-center overflow-hidden bg-transparent text-neutral-800 dark:text-neutral-200">
         <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[5] flex justify-center overflow-hidden">
           <div

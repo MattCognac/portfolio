@@ -1,0 +1,25 @@
+# Matt Hennessy
+
+> Portfolio for Matt Hennessy, a Pacific Northwest-based designer, developer, and adventure photographer.
+
+Matt Hennessy builds polished websites, marketing pages, custom web apps, and product experiences across design, frontend development, backend integrations, analytics, payments, and automation. The site includes personal background, client and personal projects, technical skills, contact links, and adventure/travel photography.
+
+## Primary Pages
+
+- [Home](https://www.mattcognac.com/)
+- [About](https://www.mattcognac.com/about)
+- [Projects](https://www.mattcognac.com/projects)
+- [Skills](https://www.mattcognac.com/skills)
+- [Photography](https://www.mattcognac.com/photography)
+
+## Useful Context
+
+- Matt is a designer, developer, and photographer based in the Pacific Northwest.
+- Project work includes Webflow marketing sites, Next.js products, React interfaces, Vercel deployments, custom forms, member portals, payments, and automations.
+- Photography focuses on landscapes, travel, remote places, mountains, waterfalls, coastlines, and adventure.
+- Public profiles include GitHub, Instagram, and X.
+
+## Discovery
+
+- Sitemap: https://www.mattcognac.com/sitemap.xml
+- Robots: https://www.mattcognac.com/robots.txt

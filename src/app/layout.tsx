@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Geist } from "next/font/google";
 import Script from "next/script";
+import { getSiteUrl, siteDescription, siteTitle } from "@/lib/site";
 import "./globals.css";
 
 const geist = Geist({
@@ -10,18 +11,13 @@ const geist = Geist({
   subsets: ["latin"],
 });
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.mattcognac.com";
+const siteUrl = getSiteUrl();
 const openGraphImagePath = "/opengraph-image.png";
-
-const title = "Matt Hennessy · Designer, Developer & Photographer";
-const description =
-  "Matt Hennessy — a PNW-based designer, developer, and adventure photographer. Explore projects, photography, and more.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title,
-  description,
+  title: siteTitle,
+  description: siteDescription,
   keywords: [
     "Matt Hennessy",
     "portfolio",
@@ -40,14 +36,14 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteUrl,
     siteName: "Matt Hennessy",
-    title,
-    description,
-    images: [{ url: openGraphImagePath, width: 1024, height: 527, alt: title }],
+    title: siteTitle,
+    description: siteDescription,
+    images: [{ url: openGraphImagePath, width: 1024, height: 527, alt: siteTitle }],
   },
   twitter: {
     card: "summary_large_image",
-    title,
-    description,
+    title: siteTitle,
+    description: siteDescription,
     creator: "@MattCognacX",
     images: [openGraphImagePath],
   },
@@ -86,7 +82,7 @@ const jsonLd = {
       "@type": "WebSite",
       name: "Matt Hennessy",
       url: siteUrl,
-      description,
+      description: siteDescription,
     },
     {
       "@type": "Person",
