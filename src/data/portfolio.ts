@@ -11,11 +11,11 @@ export const siteContent: SiteContent = {
   avatarAlt:
     "Professional headshot of Matt Hennessy, smiling, lit by warm sunlight against a blurred dark green background.",
   about: [
-    "I'm a self-taught designer and developer originally from the foothills of Northern California — though \"self-taught\" has always felt more like a philosophy than a résumé line. I've never been great at waiting for permission to figure something out, so I mostly just started making things and learned what I needed along the way.",
-    "After a few years living out of a backpack across Europe and Southeast Asia, I landed in the Pacific Northwest and it felt immediately like home — beautiful environments and towns full of people who'd rather be outside, who build things with their hands, and who care about their community. That energy fits me well.",
-    "Building is the throughline of most of what I do, even when the medium changes completely. Some weeks that looks like woodworking or renovating an off-grid camper. Other weeks it's shipping features on Memberbase, a membership platform I'm building independently, or doing design and development work through Built for Pros. The tools are different but the feeling is the same — taking something from a rough idea to a thing that actually exists and works.",
-    "Travel opened my eyes in terms of how I think about people and problems. Spending that much time outside your own context, navigating unfamiliar places with limited resources, makes you better at seeing what people actually need versus what they say they need. That's shaped a lot of how I approach problems. I'm most motivated when I'm working on something that makes a real difference in how people experience their lives — especially around community, mental health, and personal growth.",
-    "When I'm not working, I'm usually on a mountain — skiing in the winter, mountain biking when the trails dry out — or exploring backroads and hunting down remote hot springs. On the slower days, a chill Sunday morning with a good cup of coffee is just about perfect. ☕️",
+    "Hey, I'm Matt. I'm a self-taught designer and developer originally from the foothills of Northern California. I'm also a photographer, carpenter, a skier... the list goes on and on. In short, I like making things, meeting people, and exploring everything that life has to offer. Some would say I'm adventurous, but I prefer curious. I love to learn and immerse myself in new projects. It's the primary force that drives me.",
+    "This curiosity is also what eventually led me out of California and drove me to travel the world for a couple years. While abroad, I doubled down on my design and development work and started doing my first freelance projects. I traveled like this for a few years until I began to grow tired of the constant change and found myself craving a slower, steadier pace of life — to build a home, and a community alongside it.",
+    "What pulled me to the Pacific Northwest was simple: mountains, and the greenery I fell in love with in the tropics. It felt like home immediately. Towns full of people who'd rather be outside, who work with their hands, and who care about their community. This was a great change of pace after moving from country to country each month for years.",
+    "After settling here, I decided to start Built for Pros, a complete digital marketing firm tailored to contractors and home service businesses. Given that I have years in the trades as well as 5+ years of design, development, and marketing work building brands for other businesses, this felt like a natural fit for me and has been steadily growing since. If I'm not working behind the computer, I'm deep in some woodworking project or restoring vehicles. I enjoy any endeavor that allows me to bring a rough idea to life and turn it into a finished product; I find it extremely satisfying.",
+    "And finally, when I'm not working, I'm usually on a mountain — skiing in the winter, mountain biking when the trails dry out — or exploring backroads and hunting down remote hot springs. On the slower days, a chill Sunday morning with coffee at the river is just about perfect. ☕️",
   ],
   photos: [
     {
@@ -238,6 +238,13 @@ export const siteContent: SiteContent = {
     {
       title: "Personal Projects",
       items: [
+        {
+          title: "Built for Pros",
+          description:
+            "Full-service digital marketing for contractors and home service businesses — we run their entire online presence so they can stay focused on what they do best.",
+          url: "https://www.builtforpros.com/",
+          stack: ["Next.js", "React", "TypeScript", "Vercel"],
+        },
         {
           title: "Pomoflow",
           description:
